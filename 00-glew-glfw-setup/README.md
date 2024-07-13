@@ -21,4 +21,4 @@ Finally, compilation only required linking the proper libraries in the compiler 
 gcc -o main.out main.c -lGLEW -glfw -lGL
 ```
 
-The source code for this section ([`main.c`](./main.cpp)) shows how to set up GLEW and GLFW to work with OpenGL in C. It shows a simple window with a red background.
+The source code for this section ([`main.c`](./main.c)) shows how to set up GLEW and GLFW to work with OpenGL in C. It shows a simple window with a red background.
