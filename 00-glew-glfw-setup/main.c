@@ -1,7 +1,6 @@
-#include <stdio.h>
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <stdio.h>
 
 const GLint WIDTH = 800, HEIGHT = 600;
 
@@ -24,9 +23,8 @@ int main(int argc, char* argv[]) {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
   // Create window.
-  GLFWwindow *mainWindow = glfwCreateWindow(
-    WIDTH, HEIGHT, "Hello world!", NULL, NULL
-  );
+  GLFWwindow* mainWindow =
+      glfwCreateWindow(WIDTH, HEIGHT, "Hello world!", NULL, NULL);
   if (!mainWindow) {
     printf("GLFW windows creation failed.\n");
     glfwTerminate();
