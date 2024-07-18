@@ -1,31 +1,42 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 const GLint WIDTH = 800, HEIGHT = 600;
 
 GLuint VAO, VBO, shader;
+static const char* vertShader;
+static const char* fragShader;
 
-static const char* vertShader =
-    "\
-#version 330\n\
-\n\
-layout (location = 0) in vec3 pos;\n\
-\n\
-void main() {\n\
-  gl_Position = vec4(0.8 * pos.x, 0.8 * pos.y, pos.z, 1.0);\n\
-}";
+char* read_file(FILE* const fp) {
+  unsigned total_chars = 0;
+  char* content = NULL;
 
-static const char* fragShader =
-    "\
-#version 330\n\
-\n\
-out vec4 color;\n\
-\n\
-void main() {\n\
-  color = vec4(1.0, 0.0, 0.0, 1.0);\n\
-}";
+  while (fgetc(fp) != EOF) total_chars++;
+  content = (char*)malloc((size_t)(total_chars + 1) * sizeof(char));
+
+  rewind(fp);
+  for (int i = 0; i < total_chars; i++) *(content + i) = fgetc(fp);
+  *(content + total_chars) = '\0';
+
+  return content;
+}
+
+char* get_file_content(const char* const filename) {
+  char* file_content;
+  FILE* fp = fopen(filename, "r");
+
+  if (fp != NULL) {
+    file_content = read_file(fp);
+    fclose(fp);
+  } else {
+    file_content = NULL;
+  }
+
+  return file_content;
+}
 
 void createTriangle() {
   GLfloat vertices[] = {-1.0f, -1.0f, 0.0f, 1.0f, -1.0f,
@@ -106,6 +117,9 @@ void compileShaders() {
 }
 
 int main(int argc, char* argv[]) {
+  vertShader = get_file_content("01-1-shader.vert");
+  fragShader = get_file_content("01-1-shader.frag");
+
   // Initialize GLFW.
   if (!glfwInit()) {
     printf("GLFW initialization failed.\n");
