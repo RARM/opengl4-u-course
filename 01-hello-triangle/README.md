@@ -14,6 +14,10 @@ Therefore, these are the different source codes I created in this section:
 - `01-1-external-shader.c`: Attempt to load a shader program in a different file.
 - `01-2-two-triangles.c`: Exploring the concepts of vertices to draw more than one triangle.
 
+<div align="center">
+  <img src="./screenshot.png">
+</div>
+
 All the versions are compiled with the same command, just replace the proper filenames.
 ```
 gcc -o <output.out> <source.c> -lGLEW -lglfw -lGL
