@@ -15,7 +15,7 @@ Therefore, these are the different source codes I created in this section:
 - `01-2-two-triangles.c`: Exploring the concepts of vertices to draw more than one triangle.
 
 <div align="center">
-  <img src="./screenshot.png">
+  <img src="./screenshot.webp">
 </div>
 
 All the versions are compiled with the same command, just replace the proper filenames.
