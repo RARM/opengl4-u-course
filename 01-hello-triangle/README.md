@@ -11,7 +11,7 @@ Although the instructor mentioned that he will explain how to edit the program t
 
 Therefore, these are the different source codes I created in this section:
 - `01-first-triangle.c`: Original basic red triangle.
-- `01-1-load-shader.c`: Attempt to load a shader program in a different file.
+- `01-1-external-shader.c`: Attempt to load a shader program in a different file.
 - `01-2-two-triangles.c`: Exploring the concepts of vertices to draw more than one triangle.
 
 All the versions are compiled with the same command, just replace the proper filenames.
