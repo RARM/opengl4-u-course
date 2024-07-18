@@ -7,7 +7,8 @@ const GLint WIDTH = 800, HEIGHT = 600;
 
 GLuint VAO, VBO, shader;
 
-static const char* vertShader = "\
+static const char* vertShader =
+    "\
 #version 330\n\
 \n\
 layout (location = 0) in vec3 pos;\n\
@@ -16,7 +17,8 @@ void main() {\n\
   gl_Position = vec4(0.8 * pos.x, 0.8 * pos.y, pos.z, 1.0);\n\
 }";
 
-static const char* fragShader = "\
+static const char* fragShader =
+    "\
 #version 330\n\
 \n\
 out vec4 color;\n\
@@ -26,11 +28,8 @@ void main() {\n\
 }";
 
 void createTriangle() {
-  GLfloat vertices[] = {
-    -1.0f, -1.0f, 0.0f,
-     1.0f, -1.0f, 0.0f,
-     0.0f,  1.0f, 0.0f
-  };
+  GLfloat vertices[] = {-1.0f, -1.0f, 0.0f, 1.0f, -1.0f,
+                        0.0f,  0.0f,  1.0f, 0.0f};
 
   glGenVertexArrays(1, &VAO);
   glBindVertexArray(VAO);
@@ -83,7 +82,7 @@ void compileShaders() {
 
   addShader(shader, vertShader, GL_VERTEX_SHADER);
   addShader(shader, fragShader, GL_FRAGMENT_SHADER);
-  
+
   GLint result = 0;
   GLchar eLog[1024];
 
@@ -164,13 +163,13 @@ int main(int argc, char* argv[]) {
     // Clear the window.
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    
+
     glUseProgram(shader);
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);
     glBindVertexArray(0);
     glUseProgram(0);
-    
+
     glfwSwapBuffers(mainWindow);
   }
 
