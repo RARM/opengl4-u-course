@@ -1,5 +1,5 @@
 # Vectors, Matrices, and Uniform Variables
 
 <div align="center">
-  <video src="https://github.com/user-attachments/assets/26eaa1c2-12e0-45f5-b0b3-f3896f07b857" muted loop autoplay></video>
+  <img src="https://github.com/user-attachments/assets/c7217af9-e883-42d4-9518-89266d06efbc" width="285" height="228">
 </div>
