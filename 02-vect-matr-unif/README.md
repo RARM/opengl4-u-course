@@ -1,5 +1,5 @@
 # Vectors, Matrices, and Uniform Variables
 
 <div align="center">
-  <video src="./movie-triangle.mp4" muted loop autoplay></video>
+  <video src="./moving-triangle.webm.mov" muted loop autoplay></video>
 </div>
