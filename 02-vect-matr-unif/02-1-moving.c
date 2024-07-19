@@ -2,11 +2,17 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <string.h>
 
 const GLint WIDTH = 800, HEIGHT = 600;
 
-GLuint VAO, VBO, shader;
+GLuint VAO, VBO, shader, uniformXMove;
+enum direction { LEFT, RIGHT } dir = RIGHT;
+float triOffset = 0.0f;
+float triMaxOffset = 0.7f;
+float triIncrement = 0.0005f;
+
 static const char* vertShader;
 static const char* fragShader;
 
@@ -114,11 +120,13 @@ void compileShaders() {
     printf("Error validating program: %s\n", eLog);
     return;
   }
+
+  uniformXMove = glGetUniformLocation(shader, "xMove");
 }
 
 int main(int argc, char* argv[]) {
-  vertShader = get_file_content("01-1-shader.vert");
-  fragShader = get_file_content("01-1-shader.frag");
+  vertShader = get_file_content("02-1-shader.vert");
+  fragShader = get_file_content("02-1-shader.frag");
 
   // Initialize GLFW.
   if (!glfwInit()) {
@@ -139,7 +147,7 @@ int main(int argc, char* argv[]) {
 
   // Create window.
   GLFWwindow* mainWindow =
-      glfwCreateWindow(WIDTH, HEIGHT, "Hello world!", NULL, NULL);
+      glfwCreateWindow(WIDTH, HEIGHT, "Moving Triangle", NULL, NULL);
   if (!mainWindow) {
     printf("GLFW windows creation failed.\n");
     glfwTerminate();
@@ -174,11 +182,15 @@ int main(int argc, char* argv[]) {
     // Get and handle user input events.
     glfwPollEvents();
 
+    triOffset += dir == RIGHT ? triIncrement : -triIncrement;
+    if (abs(triOffset) >= triMaxOffset) dir = (dir == RIGHT) ? LEFT : RIGHT;
+
     // Clear the window.
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.9f, 0.9f, 0.9f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(shader);
+    glUniform1f(uniformXMove, triOffset);
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);
     glBindVertexArray(0);
