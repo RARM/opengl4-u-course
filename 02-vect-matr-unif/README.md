@@ -18,6 +18,8 @@ This program builds on the last lesson. The source code uses the custom function
 
 To demonstrate how uniform variables work, there is one variable that now takes care of transforming the vertices translating them through the X axis. Find the most relevant edits below.
 
+Note also that translating object using uniform variables is no the best way to do so. The purpose of this code is just to demonstrate the use of uniform variables in OpenGL.
+
 ```c
 // 02-1-moving.c
 GLuint uniformXMove;
