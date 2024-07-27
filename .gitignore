@@ -1,6 +1,9 @@
 # Visual Studio Code
 .vscode
 
+# GLM
+glm/
+
 # Prerequisites
 *.d
 
