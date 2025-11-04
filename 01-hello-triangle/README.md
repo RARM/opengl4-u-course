@@ -35,3 +35,6 @@ gdb ./01-first-triangle.out
 (gdb) run
 (gdb) bt
 ```
+
+## Optimizing Loop
+There are two versions, `01-3-optimized-loop-vsync.c` and `01-4-optimized-loop-events.c`, that try to reduce the number of loops that happen in a second. The first program uses V-Sync to match the screen refresh rate. The second waits for user input instead of pulling. Since I am generating static images for now, the second option may be best.
