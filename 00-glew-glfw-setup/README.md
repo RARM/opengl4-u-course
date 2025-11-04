@@ -22,3 +22,11 @@ gcc -o main.out main.c -lGLEW -lglfw -lGL
 ```
 
 The source code for this section ([`main.c`](./main.c)) shows how to set up GLEW and GLFW to work with OpenGL in C. It shows a simple window with a red background.
+
+
+## MacOS
+Later, I switched to a Mac with an M chip. Apple deprecated OpenGL after their computers implemented OpenGL 4.1, but it is still possible to compile code using that version (and below). The command below shows how to compile this same program within an Apple system.
+
+```
+clang -o main.out main.c `pkg-config --cflags --libs glew glfw3` -framework OpenGL
+```
