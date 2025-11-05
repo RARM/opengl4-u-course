@@ -13,6 +13,8 @@ Therefore, these are the different source codes I created in this section:
 - `01-first-triangle.c`: Original basic red triangle.
 - `01-1-external-shader.c`: Attempt to load a shader program in a different file.
 - `01-2-two-triangles.c`: Exploring the concepts of vertices to draw more than one triangle.
+- `01-3-optimized-loop-vsync.c`: Reduces the loop speed by synchronizing rendering with screen refresh rate.
+- `01-4-optimized-loop-events.c`: Reduces the loop speed by waiting for user interaction to redraw.
 
 <div align="center">
   <img src="./screenshot.webp">
