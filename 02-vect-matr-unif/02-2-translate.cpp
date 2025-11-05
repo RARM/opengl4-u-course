@@ -50,8 +50,11 @@ char* get_file_content(const char* const filename) {
 }
 
 void createTriangle() {
-  GLfloat vertices[] = {-1.0f, -1.0f, 0.0f, 1.0f, -1.0f,
-                        0.0f,  0.0f,  1.0f, 0.0f};
+  GLfloat vertices[] = {
+    -1.0f, -1.0f, 0.0f,
+    1.0f,  -1.0f, 0.0f,
+    0.0f,   1.0f, 0.0f
+  };
 
   glGenVertexArrays(1, &VAO);
   glBindVertexArray(VAO);
