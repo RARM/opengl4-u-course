@@ -7,6 +7,14 @@ Content:
 - Vectors
 - Matrices
 
+Only the first program (`02-1-vect-matr-unif.c`) uses the uniform variables of a single floating point. All other programs use vectors and matrices as uniform variables.
+
+## Programs List
+
+- `02-1-vect-matr-unif.c`: Example of using uniform variables and a non-efficient translation example.
+- `02-2-translate.cpp`: Improving code by using matrices and the GLM library.
+- `02-3-rot-scal.cpp`: Adding on rotation and scaling.
+
 ## Extra Setup
 This tutorial uses another library, GLM (OpenGL Mathematics). That's a library that simplify mathematical operations (e.g., vectors and matrices). To compile the same program with GLM, ensure you have it installed. Then, add it to the compilation command. **Remember that GLM is a C++ library, so you'll have to use `clang++` (or `g++`) instead.**
 
