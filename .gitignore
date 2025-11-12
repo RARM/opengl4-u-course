@@ -1,6 +1,9 @@
 # Visual Studio Code
 .vscode
 
+# Vim
+*.swp
+
 # GLM
 glm/
 
