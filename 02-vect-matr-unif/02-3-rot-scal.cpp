@@ -17,11 +17,17 @@ constexpr float toRadians = 3.14159265f / 180.0f;
 enum direction { LEFT, RIGHT };
 direction dir = direction::RIGHT;
 
+bool sizeDirection = false;
+
 float triOffset = 0.0f;
 float triMaxOffset = 0.7f;
 float triIncrement = 0.005f;
 
 float curAngle = 0.0f;
+
+float curSize = 0.4f;
+float maxSize = 0.8f;
+float minSize = 0.1f;
 
 static const char* vertShader;
 static const char* fragShader;
@@ -138,7 +144,7 @@ void compileShaders() {
 }
 
 int main(int argc, char* argv[]) {
-  vertShader = get_file_content("02-2-shader.vert");
+  vertShader = get_file_content("02-3-shader.vert");
   fragShader = get_file_content("02-1-shader.frag");
 
   // Initialize GLFW.
@@ -195,10 +201,14 @@ int main(int argc, char* argv[]) {
     // Get and handle user input events.
     glfwPollEvents();
 
+    // Calculating transformations.
     triOffset += dir == RIGHT ? triIncrement : -triIncrement;
     if (abs(triOffset) >= triMaxOffset) dir = (dir == RIGHT) ? LEFT : RIGHT;
 
     curAngle += curAngle >= 360.0f ? -360.0f : 0.1f;
+
+    curSize += sizeDirection ? 0.01f : -0.01f;
+    if (curSize < minSize || curSize > maxSize) sizeDirection ^= 0x01;
 
     // Clear the window.
     glClearColor(0.9f, 0.9f, 0.9f, 1.0f);
@@ -207,9 +217,16 @@ int main(int argc, char* argv[]) {
     glUseProgram(shader);
 
     glm::mat4 model{0.1f};
+
+    // Scale, Rotate, and Translate
+    // This section is the main addition to this verion. 
+    //
+    // The order of the operations mater.
+    // 
+    model = glm::scale(model, glm::vec3(curSize, 0.4f, 0.0f));
     model = glm::rotate(model, curAngle * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-    // model = glm::translate(model, glm::vec3(triOffset, 0.0f, 0.0f));
-    model = glm::translate(model, glm::vec3(triOffset, triOffset, 0.0f));
+    model = glm::translate(model, glm::vec3(triOffset, 0.0f, 0.0f));
+    // model = glm::translate(model, glm::vec3(triOffset, triOffset, 0.0f));
 
     // glUniform1f(uniformXMove, triOffset);
     glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
